@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OS10_1", "OS10\OS10.vcxproj", "{95BFBF2A-BEEE-4975-85C0-77432F34BF2D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OS10_HTAPI", "OS10_HTAPI\OS10_HTAPI.vcxproj", "{5350424C-0C76-4307-8A93-2D9CDEF277A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{95BFBF2A-BEEE-4975-85C0-77432F34BF2D}.Release|x64.Build.0 = Release|x64
 		{95BFBF2A-BEEE-4975-85C0-77432F34BF2D}.Release|x86.ActiveCfg = Release|Win32
 		{95BFBF2A-BEEE-4975-85C0-77432F34BF2D}.Release|x86.Build.0 = Release|Win32
+		{5350424C-0C76-4307-8A93-2D9CDEF277A2}.Debug|x64.ActiveCfg = Debug|x64
+		{5350424C-0C76-4307-8A93-2D9CDEF277A2}.Debug|x64.Build.0 = Debug|x64
+		{5350424C-0C76-4307-8A93-2D9CDEF277A2}.Debug|x86.ActiveCfg = Debug|Win32
+		{5350424C-0C76-4307-8A93-2D9CDEF277A2}.Debug|x86.Build.0 = Debug|Win32
+		{5350424C-0C76-4307-8A93-2D9CDEF277A2}.Release|x64.ActiveCfg = Release|x64
+		{5350424C-0C76-4307-8A93-2D9CDEF277A2}.Release|x64.Build.0 = Release|x64
+		{5350424C-0C76-4307-8A93-2D9CDEF277A2}.Release|x86.ActiveCfg = Release|Win32
+		{5350424C-0C76-4307-8A93-2D9CDEF277A2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
