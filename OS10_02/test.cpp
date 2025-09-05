@@ -2,8 +2,8 @@
 using namespace std;
 using namespace HT;
 
-#define PASSWORD "key111"
-#define ADDRESS "D:\\HT_Space.ht"
+#define PASSWORD_1 "key111"
+#define ADDRESS_1 "D:\\HT_Space.ht"
 
 int main()
 {
@@ -13,16 +13,16 @@ int main()
     HTHANDLE* ht = nullptr;
     try
     {
-        ht = Create(1000, 3, 10, 256, ADDRESS);
+        ht = Create(1000, 3, 10, 256, ADDRESS_1);
         if (ht) 
             cout << "Create: success" << endl;
         else throw "Create: error";
 
-        if (Insert(ht, new Element(PASSWORD, 7, "payload", 8))) 
+        if (Insert(ht, new Element(PASSWORD_1, 7, "payload", 8))) 
             cout << "Insert:success" << endl;
         else throw "Insert:error";
 
-        Element* hte = Get(ht, new Element(PASSWORD, 7));
+        Element* hte = Get(ht, new Element(PASSWORD_1, 7));
         if (hte) 
             cout << "Get: success" << endl;
         else throw "Get: error";
@@ -37,7 +37,7 @@ int main()
             cout << "Update:success" << endl;
         else throw "Update:error";
 
-        Element* htel = Get(ht, new Element(PASSWORD, 7));
+        Element* htel = Get(ht, new Element(PASSWORD_1, 7));
         if (htel) 
             cout << "Get: success" << endl;
         else throw "Get: error";
@@ -59,12 +59,12 @@ int main()
     HTHANDLE* ht2 = nullptr;
     try
     {
-        ht2 = Open(ADDRESS);
+        ht2 = Open(ADDRESS_1);
         if (ht2) 
             cout << "Open: success" << endl;
         else throw " Open: error";
 
-        Element* hte = Get(ht2, new Element(PASSWORD, 7));
+        Element* hte = Get(ht2, new Element(PASSWORD_1, 7));
         if (hte)
             cout << "Get: success" << endl;
         else throw "Get: error";
