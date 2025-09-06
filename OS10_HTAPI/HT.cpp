@@ -5,6 +5,10 @@ using namespace std;
 
 namespace HT
 {
+    char* FindDataStart(LPVOID Addr) {
+        return static_cast<char*>(Addr) + sizeof(HTHANDLE);
+    }
+
     HTHANDLE* Create(
         int Capacity,                   // Емкость
         int SecSnapshotInterval,        // Интервал создания снимков в секундах
@@ -146,6 +150,7 @@ namespace HT
 
     BOOL Snap(const HTHANDLE* hthandle) // Создание снимка (сохранение состояния)
     {
+        // Проверка наличия отображения
         if (hthandle == nullptr || hthandle->Addr == nullptr) {
             return FALSE;
         }
@@ -210,11 +215,8 @@ namespace HT
             return FALSE;
         }
 
-        // Поиск пустого слота и вставка
-        char* dataStart = static_cast<char*>(hthandle->Addr) + sizeof(HTHANDLE);
-
         // Копируем элемент
-        memcpy(dataStart, element, sizeof(Element));
+        memcpy(FindDataStart(hthandle->Addr), element, sizeof(Element));
 
         // Проверка необходимости создания снимка
         time_t currentTime = time(nullptr);
@@ -240,8 +242,7 @@ namespace HT
         }
 
         // Пометить как удаленный
-        char* dataStart = static_cast<char*>(hthandle->Addr) + sizeof(HTHANDLE);
-        memset(dataStart, 0, sizeof(Element));
+        memset(FindDataStart(hthandle->Addr), 0, sizeof(Element));
 
         delete found;
 
@@ -261,8 +262,7 @@ namespace HT
         }
 
         // Поиск в хеш-таблице
-        char* dataStart = static_cast<char*>(hthandle->Addr) + sizeof(HTHANDLE);
-        Element* storedElement = reinterpret_cast<Element*>(dataStart);
+        Element* storedElement = reinterpret_cast<Element*>(FindDataStart(hthandle->Addr));
 
         // Проверка, является ли это искомый элемент
         if (storedElement->key != nullptr &&
@@ -297,8 +297,7 @@ namespace HT
         }
 
         // Обновление полезной нагрузки
-        char* dataStart = static_cast<char*>(hthandle->Addr) + sizeof(HTHANDLE);
-        Element* storedElement = reinterpret_cast<Element*>(dataStart);
+        Element* storedElement = reinterpret_cast<Element*>(FindDataStart(hthandle->Addr));
 
         // Выделение памяти
         storedElement->payload = newpayload;
